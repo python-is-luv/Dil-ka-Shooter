@@ -80,7 +80,7 @@ animations = [{
 }]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_uhqni"]
-radius = 35.69314
+radius = 21.095022
 
 [node name="Bat" type="CharacterBody2D"]
 script = ExtResource("1_cnldk")

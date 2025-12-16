@@ -1,6 +1,6 @@
 extends CharacterBody2D
 
-@export var speed = 50.0
+@export var speed: float = 50.0  # Add type hint
 @onready var animated_sprite = $AnimatedSprite2D
 @onready var player: CharacterBody2D = $"../Player"
 var health = 1
@@ -10,11 +10,11 @@ func _ready():
 	animated_sprite.play("idle")
 	
 func _physics_process(delta: float) -> void:
-	if not player:
+	if not player or speed == null:  # Add safety check
 		return
 	
 	var direction = global_position.direction_to(player.global_position)
-	velocity = direction * speed  # Changed order: direction first
+	velocity = direction * speed
 	move_and_slide()
 	
 	if velocity.x < 0:
@@ -24,6 +24,7 @@ func _physics_process(delta: float) -> void:
 		
 func play_hurt():
 	animated_sprite.play("damage")
+	await animated_sprite.animation_finished
 	animated_sprite.play("idle")
 	
 func take_damage():

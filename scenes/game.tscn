@@ -1,10 +1,9 @@
-[gd_scene load_steps=13 format=3 uid="uid://etd74kamc7mv"]
+[gd_scene load_steps=12 format=3 uid="uid://etd74kamc7mv"]
 
+[ext_resource type="Script" uid="uid://bmwlcn5w00mbi" path="res://scenes/game.gd" id="1_iywne"]
 [ext_resource type="Texture2D" uid="uid://bullwus12doj8" path="res://assets/dungeon/PNG/walls_floor.png" id="1_yqjtg"]
 [ext_resource type="Texture2D" uid="uid://c64bmu6tvl7c3" path="res://assets/dungeon/Tiled_files/walls_floor.png" id="2_yqjtg"]
 [ext_resource type="PackedScene" uid="uid://dlywhcq58wd5" path="res://assets/Caleb/caleb.tscn" id="3_lnu2h"]
-[ext_resource type="PackedScene" uid="uid://bu6pr8ga1730q" path="res://scenes/bat.tscn" id="4_lbhrr"]
-[ext_resource type="PackedScene" uid="uid://crvewdi2ak5c6" path="res://scenes/aim.tscn" id="5_iywne"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_lnu2h"]
 texture = ExtResource("2_yqjtg")
@@ -1225,7 +1224,9 @@ sources/0 = SubResource("TileSetAtlasSource_p57ef")
 
 [sub_resource type="Curve2D" id="Curve2D_lnu2h"]
 
-[node name="Game" type="Node2D"]
+[node name="Game" type="Node2D" node_paths=PackedStringArray("path_follow")]
+script = ExtResource("1_iywne")
+path_follow = NodePath("Player/Path2D/PathFollow2D")
 
 [node name="wall_floor" type="TileMap" parent="."]
 scale = Vector2(2, 2)
@@ -1253,9 +1254,4 @@ curve = SubResource("Curve2D_lnu2h")
 
 [node name="PathFollow2D" type="PathFollow2D" parent="Player/Path2D"]
 
-[node name="Bat" parent="." instance=ExtResource("4_lbhrr")]
-
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
-
-[node name="Aim" parent="." instance=ExtResource("5_iywne")]
-position = Vector2(125, 171)
