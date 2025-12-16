@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://etd74kamc7mv"]
+[gd_scene load_steps=11 format=3 uid="uid://etd74kamc7mv"]
 
 [ext_resource type="Texture2D" uid="uid://bullwus12doj8" path="res://assets/dungeon/PNG/walls_floor.png" id="1_yqjtg"]
 [ext_resource type="Texture2D" uid="uid://c64bmu6tvl7c3" path="res://assets/dungeon/Tiled_files/walls_floor.png" id="2_yqjtg"]
@@ -1221,6 +1221,8 @@ texture = ExtResource("1_yqjtg")
 physics_layer_0/collision_layer = 1
 sources/0 = SubResource("TileSetAtlasSource_p57ef")
 
+[sub_resource type="Curve2D" id="Curve2D_lnu2h"]
+
 [node name="Game" type="Node2D"]
 
 [node name="wall_floor" type="TileMap" parent="."]
@@ -1243,3 +1245,10 @@ layer_0/tile_data = PackedInt32Array(327687, 524288, 7, 393223, 524288, 8, 32768
 
 [node name="Player" parent="." instance=ExtResource("3_lnu2h")]
 position = Vector2(-70, 182)
+
+[node name="Path2D" type="Path2D" parent="Player"]
+curve = SubResource("Curve2D_lnu2h")
+
+[node name="PathFollow2D" type="PathFollow2D" parent="Player/Path2D"]
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]

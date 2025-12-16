@@ -1,4 +1,4 @@
-[gd_scene load_steps=79 format=3 uid="uid://dlywhcq58wd5"]
+[gd_scene load_steps=80 format=3 uid="uid://dlywhcq58wd5"]
 
 [ext_resource type="Script" uid="uid://dwec0m3pd4u8l" path="res://assets/Caleb/caleb.gd" id="1_hiiys"]
 [ext_resource type="Texture2D" uid="uid://diap2py1toidp" path="res://assets/Caleb/IDLE/idle_down.png" id="2_dd0h0"]
@@ -9,6 +9,7 @@
 [ext_resource type="Texture2D" uid="uid://bgbgysf165vd5" path="res://assets/Caleb/RUN/run_left.png" id="7_spc81"]
 [ext_resource type="Texture2D" uid="uid://dkwrw66itiwtn" path="res://assets/Caleb/RUN/run_right.png" id="8_hreft"]
 [ext_resource type="Texture2D" uid="uid://vroivte7j58k" path="res://assets/Caleb/RUN/run_up.png" id="9_yojnh"]
+[ext_resource type="PackedScene" uid="uid://1doqm0vbdsif" path="res://scenes/gun.tscn" id="10_dd0h0"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_7xv88"]
 atlas = ExtResource("2_dd0h0")
@@ -538,17 +539,8 @@ autoplay = "idle_right"
 position = Vector2(0, 16)
 shape = SubResource("CapsuleShape2D_i4ail")
 
-[node name="Gun" parent="."]
-_import_path = NodePath("")
-unique_name_in_owner = false
-process_mode = 0
-process_priority = 0
-process_physics_priority = 0
-process_thread_group = 0
-physics_interpolation_mode = 0
-auto_translate_mode = 0
-editor_description = ""
-script = null
+[node name="Gun" parent="." instance=ExtResource("10_dd0h0")]
+position = Vector2(14, 0)
 
 [node name="Hitbox" type="Area2D" parent="."]
 collision_layer = 0
